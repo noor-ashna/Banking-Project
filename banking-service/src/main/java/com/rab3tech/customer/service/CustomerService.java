@@ -55,6 +55,8 @@ public interface CustomerService {
 
 	void deleteCustomer(String userid);
 
+	CustomerVO findCustomerByUsername(String username);
+
 	
 
 }
