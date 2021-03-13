@@ -4,13 +4,14 @@ import java.util.List;
 
 import com.rab3tech.vo.AccountTypeVO;
 import com.rab3tech.vo.CustomerAccountInfoVO;
-import com.rab3tech.vo.CustomerSavingVO;
 import com.rab3tech.vo.CustomerUpdateVO;
 import com.rab3tech.vo.CustomerVO;
+import com.rab3tech.vo.FundTransferVO;
 import com.rab3tech.vo.PayeeApproveVO;
 import com.rab3tech.vo.PayeeInfoVO;
 import com.rab3tech.vo.RoleVO;
 import com.rab3tech.vo.UpdatePayeeVO;
+
 
 public interface CustomerService {
 
@@ -56,6 +57,12 @@ public interface CustomerService {
 	void deleteCustomer(String userid);
 
 	CustomerVO findCustomerByUsername(String username);
+
+	void updateCustomerProfile(int cid, String name, String jobTitle);
+
+	void updatePhoto(int cid, byte[] bphoto);
+	
+	FundTransferVO executeTransaction(FundTransferVO fundTransferVO); 
 
 	
 

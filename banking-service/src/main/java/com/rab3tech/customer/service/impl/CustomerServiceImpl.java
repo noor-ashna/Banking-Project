@@ -19,7 +19,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.rab3tech.admin.dao.repository.AccountStatusRepository;
 import com.rab3tech.admin.dao.repository.AccountTypeRepository;
 import com.rab3tech.admin.dao.repository.MagicCustomerRepository;
-import com.rab3tech.aop.advice.TimeLogger;
 import com.rab3tech.customer.dao.repository.CustomerAccountApprovedRepository;
 import com.rab3tech.customer.dao.repository.CustomerAccountEnquiryRepository;
 import com.rab3tech.customer.dao.repository.CustomerAccountInfoRepository;
@@ -46,10 +45,10 @@ import com.rab3tech.utils.PasswordGenerator;
 import com.rab3tech.utils.Utils;
 import com.rab3tech.vo.AccountTypeVO;
 import com.rab3tech.vo.CustomerAccountInfoVO;
-import com.rab3tech.vo.CustomerSavingVO;
 import com.rab3tech.vo.CustomerUpdateVO;
 import com.rab3tech.vo.CustomerVO;
 import com.rab3tech.vo.EmailVO;
+import com.rab3tech.vo.FundTransferVO;
 import com.rab3tech.vo.PayeeApproveVO;
 import com.rab3tech.vo.PayeeInfoVO;
 import com.rab3tech.vo.RoleVO;
@@ -97,6 +96,7 @@ public class CustomerServiceImpl implements CustomerService {
 	
 	@Autowired
 	private EmailService emailService;
+	
 	
 	//@TimeLogger
 	private CustomerAccountInfoVO createBankAccount(int csaid,String email) {
@@ -256,13 +256,29 @@ public class CustomerServiceImpl implements CustomerService {
 		return customer.getImage(); 
 		
 	}
+	/*
+	 * Code to upload the image
+	 * @Transactional
+	 */
 	
+	@Override
+	public void updatePhoto(int cid,byte[] photo){
+		Optional<Customer> optionalCustomer=customerRepository.findById(cid);   //optional means record might or might not exist
+		if(optionalCustomer.isPresent()) {
+			Customer customer = optionalCustomer.get();
+			customer.setImage(photo);
+			//customerRepository.save(customer);
+			
+		}
+		
+		
+    }
 	
 	@Override
 	public byte[] findPhotoByid(int cid) {
 		Optional<Customer> optionalCustomer=customerRepository.findById(cid);
 		if(optionalCustomer.isPresent()) {
-			return optionalCustomer.get().getImage();
+			return optionalCustomer.get().getImage();   // Object from Database will come in byte array when it is fetched
 		}else {
 			return null;
 		}
@@ -459,4 +475,27 @@ public class CustomerServiceImpl implements CustomerService {
 		payeeRepository.deleteById(payeeId);
 	}
 
-}
+	@Override
+	public void updateCustomerProfile(int cid, String name, String jobTitle) {
+		
+		Optional<Customer> optionalCustomer=customerRepository.findById(cid);
+		if(optionalCustomer.isPresent()) {
+			Customer customer=optionalCustomer.get();
+			customer.setName(name);
+			customer.setJobTitle(jobTitle);
+		}
+	}
+
+	@Override
+	public FundTransferVO executeTransaction(FundTransferVO fundTransferVO) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+
+	//@Override
+	//public void updatePhoto(int cid, byte[] bphoto) {
+		// TODO Auto-generated method stub
+		
+	}

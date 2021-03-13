@@ -88,21 +88,34 @@
 <div class="container">
  <br/>
  <br/>
+  <a th:href="@{/customer/addPayee}"> 
+  <button type="button" class="btn btn-primary">Add payee</button>
+  </a>
 <a th:href="@{/customer/pendingPayee}">
 <button type="button" class="btn btn-success">Pending payee</button>
 </a>
-
 <a th:href="@{/customer/registeredPayee}">
 <button type="button" class="btn btn-info">My registered payees</button>
 </a>
  <a th:href="@{/customer/logout}"><button type="button" class="btn btn-warning">Logout</button></a>
  <br/>
  <br/>
-  
  <div style="width: 100%">
-  
-   <form th:action="@{/customer/fundTransfer}" method="POST"  
-   th:object="${fundTransferVO}" name="fundTransferVOForm">
+   <a th:href="@{/customer/fundTransfer}">
+<button type="button" class="btn btn-primary">Fund Transfer</button>
+</a>
+
+<a th:href="@{/customer/accountSummary}">
+<button type="button" class="btn btn-danger">Account Summary</button>
+</a>
+
+<a th:href="@{/customer/profile}">
+<button type="button" class="btn btn-primary">Profile</button>
+</a>
+
+<a th:href="@{/customer/logout}"><button type="button" class="btn btn-warning">Logout</button></a>
+ <br/>
+ <br/>
    
     <div>
      <span id="errorMessage" th:utext="${error}" style="color: red;font-size: 14px;"></span>

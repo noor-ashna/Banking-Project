@@ -12,21 +12,21 @@ import javax.persistence.Table;
 @Table(name="customer_transactions_tbl")
 public class CustomerTransaction {
 	
-	
 	private int txid;
+	
 	private String fromAccount;
-	private String toAccout;
+	private String toAccount;
 	private double amount;
 	private String txType;
     private String details;
     private Timestamp dot;
     private String transactionSchedule;
-    private String txStatus;
+    private String txtStatus;
     private String bankName;
-	
+    
     @Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-    public int getTxid() {
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+	public int getTxid() {
 		return txid;
 	}
 	public void setTxid(int txid) {
@@ -38,11 +38,11 @@ public class CustomerTransaction {
 	public void setFromAccount(String fromAccount) {
 		this.fromAccount = fromAccount;
 	}
-	public String getToAccout() {
-		return toAccout;
+	public String getToAccount() {
+		return toAccount;
 	}
-	public void setToAccout(String toAccout) {
-		this.toAccout = toAccout;
+	public void setToAccount(String toAccount) {
+		this.toAccount = toAccount;
 	}
 	public double getAmount() {
 		return amount;
@@ -74,11 +74,11 @@ public class CustomerTransaction {
 	public void setTransactionSchedule(String transactionSchedule) {
 		this.transactionSchedule = transactionSchedule;
 	}
-	public String getTxStatus() {
-		return txStatus;
+	public String getTxtStatus() {
+		return txtStatus;
 	}
-	public void setTxStatus(String txStatus) {
-		this.txStatus = txStatus;
+	public void setTxtStatus(String txtStatus) {
+		this.txtStatus = txtStatus;
 	}
 	public String getBankName() {
 		return bankName;
@@ -88,12 +88,11 @@ public class CustomerTransaction {
 	}
 	@Override
 	public String toString() {
-		return "CustomerTransaction [txid=" + txid + ", fromAccount=" + fromAccount + ", toAccout=" + toAccout
+		return "CustomerTransaction [txid=" + txid + ", fromAccount=" + fromAccount + ", toAccount=" + toAccount
 				+ ", amount=" + amount + ", txType=" + txType + ", details=" + details + ", dot=" + dot
-				+ ", transactionSchedule=" + transactionSchedule + ", txStatus=" + txStatus + ", bankName=" + bankName
+				+ ", transactionSchedule=" + transactionSchedule + ", txtStatus=" + txtStatus + ", bankName=" + bankName
 				+ "]";
 	}
-    
     
     
 }
