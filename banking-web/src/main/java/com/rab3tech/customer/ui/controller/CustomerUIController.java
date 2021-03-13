@@ -185,9 +185,7 @@ public class CustomerUIController {
 		return "customer/customerTransaction"; // thyme leaf
 		
 	}
-	
 
-	
 	@PostMapping("/customer/changePassword")
 	public String saveCustomerQuestions(@ModelAttribute ChangePasswordVO changePasswordVO, Model model,HttpSession session) {
 		LoginVO  loginVO2=(LoginVO)session.getAttribute("userSessionVO");
